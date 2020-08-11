@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!--inject SignInManager<IdentityUser> SignInManager  -->
+<!--inject UserManager<IdentityUser> UserManager     -->
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+<ul class="navbar-nav"> 
+@if (SignInManager.IsSignedIn(User))
+{ // вход осуществлен
+    
+    
+     
+     <!--       <li class="nav-item"> -->
+                <!-- <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="List">Список</a> -->
+            <!--    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="List">Список</a>
+            </li> -->
+    
+    
+        <li class="nav-item">
+        <!-- <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">User.Identity.Name!</a> -->
+        <!-- <div class="nav-link text-dark">User.Identity.Name!</div> -->
+            <div class="nav-link text-dark">@ViewBag.user</div>
+        </li>
+                <li class="nav-item">
+                    <!--  <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="Url.Action("Index", "Home", new { area = "" })"> -->
+                    <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Выход</button>
+                        <!-- <input type="submit" value="Выход" />  -->
+                    </form>
+                </li>
+           
+            }
+            else
+            { // вход не осуществлен
+       
+                <li class="nav-item">
+                    <!--<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a> -->
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
+                </li>
+                <li class="nav-item">
+                    <!--  <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a> -->
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
+                </li>
+           
+            }
+</ul>

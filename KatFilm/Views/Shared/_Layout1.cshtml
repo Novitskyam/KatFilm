@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!--inject SignInManager<IdentityUser> SignInManager  -->
+<!--inject UserManager<IdentityUser> UserManager     -->
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@if (SignInManager.IsSignedIn(User))
+{ // вход осуществлен
+    @if (@ViewBag.zag == "I")
+    {  <!-- -->
+        <a class="nav-link" asp-controller="Home" asp-action="List">Список</a>
+    }
+    @if (ViewBag.zag == "L")
+    {
+        <a class="nav-link" asp-controller="Home" asp-action="List">Список</a>
+        <a class="nav-link" asp-controller="Home" asp-action="Create">Добавить</a>
+    }
+}

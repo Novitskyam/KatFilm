@@ -1,0 +1,11 @@
+﻿@model MainmessModel
+ 
+@{
+    ViewData["Title"] = "Home Page";
+    string txt = @Model.txt;
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Каталог фильмов</h1>
+        <div>@txt</div>
+    </div>
